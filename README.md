@@ -10,3 +10,5 @@ The tool is designed for early-stage startups and remote teams using multiple AI
 npm install
 ### Run locally
 npm run dev
+
+Link: https://ai-tool-spend-auditor.vercel.app/
