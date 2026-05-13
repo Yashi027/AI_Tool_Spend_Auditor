@@ -13,7 +13,7 @@ export default function EmailGate() {
         <input
           type="email"
           placeholder="you@company.com"
-          className="flex-1 p-4 rounded-xl text-black"
+          className="flex-1 p-4 rounded-xl text-white"
         />
 
         <button className="bg-accent px-6 py-4 rounded-xl">

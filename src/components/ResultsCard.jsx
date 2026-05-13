@@ -1,59 +1,59 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { Mail } from "lucide-react";
 
-export default function ResultsCard({ results }) {
+export default function EmailGate() {
+  const [email, setEmail] = useState("");
+  const [saved, setSaved] = useState(false);
+
+  const handleSave = () => {
+    if (!email.includes("@")) {
+      alert("Enter valid email");
+      return;
+    }
+
+    setSaved(true);
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-white rounded-3xl p-8 shadow-xl mt-10"
-    >
-      <h2 className="text-3xl font-bold">
-        Your AI Spend Audit
-      </h2>
+    <div className="max-w-6xl mx-auto mt-10 bg-white rounded-3xl p-8 shadow-lg">
 
-      <div className="grid md:grid-cols-3 gap-6 mt-8">
-        <div className="p-6 rounded-2xl bg-gray-50">
-          <p className="text-gray-500">Current Spend</p>
-          <h3 className="text-4xl font-bold">
-            ${results.monthlySpend}
-          </h3>
-        </div>
+      <div className="flex items-center gap-3">
+        <Mail />
 
-        <div className="p-6 rounded-2xl bg-green-50">
-          <p className="text-gray-500">Potential Savings</p>
-          <h3 className="text-4xl font-bold text-green-600">
-            ${results.monthlySavings}
-          </h3>
-        </div>
-
-        <div className="p-6 rounded-2xl bg-purple-50">
-          <p className="text-gray-500">Annual Savings</p>
-          <h3 className="text-4xl font-bold text-purple-600">
-            ${results.annualSavings}
-          </h3>
-        </div>
+        <h2 className="text-3xl font-bold">
+          Save Your Audit Report
+        </h2>
       </div>
 
-      <div className="mt-10">
-        <h3 className="text-2xl font-semibold mb-4">
-          Recommendations
-        </h3>
+      <p className="text-gray-500 mt-3">
+        Get this audit delivered to your inbox.
+      </p>
 
-        {results.recommendations.map((rec, idx) => (
-          <div
-            key={idx}
-            className="border rounded-2xl p-5 mb-4"
-          >
-            <p className="font-semibold">
-              Switch from {rec.current} → {rec.recommended}
-            </p>
+      <div className="flex flex-col md:flex-row gap-4 mt-6">
 
-            <p className="text-green-600 mt-2">
-              Save ${rec.savings}/month
-            </p>
-          </div>
-        ))}
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+          className="flex-1 border p-4 rounded-2xl"
+        />
+
+        <button
+          onClick={handleSave}
+          className="bg-black text-white px-8 py-4 rounded-2xl"
+        >
+          Save Report
+        </button>
       </div>
-    </motion.div>
+
+      {saved && (
+        <p className="text-green-600 mt-4">
+          Report saved successfully.
+        </p>
+      )}
+    </div>
   );
 }

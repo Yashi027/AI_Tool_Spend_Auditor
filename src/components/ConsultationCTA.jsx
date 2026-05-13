@@ -1,19 +1,31 @@
-export default function ConsultationCTA({ savings }) {
+export default function ConsultationCTA({
+  savings,
+}) {
   if (savings < 100) return null;
 
   return (
-    <div className="mt-10 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-3xl p-10">
-      <h2 className="text-4xl font-bold">
-        You Could Save ${savings * 12}/Year
+    <div className="max-w-6xl mx-auto mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-3xl p-10 shadow-2xl">
+
+      <h2 className="text-5xl font-bold leading-tight">
+        You Could Save
+        <br />
+        ${savings * 12}/Year
       </h2>
 
-      <p className="mt-4 text-lg">
-        Our consultants can optimize your entire AI stack.
+      <p className="mt-5 text-xl text-purple-100 max-w-2xl">
+        Our consultants can optimize your
+        entire AI stack and reduce costs
+        dramatically.
       </p>
 
-      <button className="mt-6 bg-white text-black px-6 py-4 rounded-2xl font-semibold">
+      <a
+        href="https://calendly.com"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-block mt-8 bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+      >
         Book Credex Consultation
-      </button>
+      </a>
     </div>
   );
 }
